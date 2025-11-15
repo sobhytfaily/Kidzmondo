@@ -1,0 +1,25 @@
+# /etc/systemd/system/kidzmondo.service
+# Example systemd unit for Strapi (edit paths, user, and env)
+
+[Unit]
+Description=Kidzmondo Strapi API
+After=network.target
+
+[Service]
+Type=simple
+User=strapi
+Group=strapi
+WorkingDirectory=/var/www/kidzmondo
+Environment=NODE_ENV=production
+# It's recommended to set secrets in an EnvironmentFile instead of inline
+# EnvironmentFile=/var/www/kidzmondo/.env
+# Or export via your secret manager; keep APP_KEYS and salts secret
+ExecStart=/usr/bin/npm run start --silent
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=always
+RestartSec=10
+# Increase open files if needed
+LimitNOFILE=65535
+
+[Install]
+WantedBy=multi-user.target

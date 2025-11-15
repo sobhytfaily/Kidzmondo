@@ -1,0 +1,26 @@
+# Example Nginx reverse proxy for Strapi
+# Place under /etc/nginx/sites-available/kidzmondo and symlink to sites-enabled
+
+server {
+    listen 80;
+    server_name api.example.com;
+
+    # If using HTTPS with a TLS termination proxy, redirect HTTP -> HTTPS
+    # return 301 https://$host$request_uri;
+
+    # If serving admin and API from the same host
+    location / {
+        proxy_pass http://127.0.0.1:1337;
+        proxy_http_version 1.1;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-Host $host;
+        proxy_set_header Host $host;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_read_timeout 600s;
+    }
+
+    client_max_body_size 50M;
+    keepalive_timeout 65;
+}
