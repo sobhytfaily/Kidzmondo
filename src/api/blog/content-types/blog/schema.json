@@ -36,6 +36,15 @@
     },
     "Date": {
       "type": "datetime"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "blogs"
+    },
+    "authorName": {
+      "type": "string"
     }
   }
 }
