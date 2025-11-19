@@ -1,0 +1,22 @@
+{
+  "kind": "singleType",
+  "collectionName": "investor_relations",
+  "info": {
+    "singularName": "investor-relation",
+    "pluralName": "investor-relations",
+    "displayName": "investor-relation"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "pdfs": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "files"
+      ]
+    }
+  }
+}
