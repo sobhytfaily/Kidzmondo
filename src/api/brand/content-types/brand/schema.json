@@ -25,20 +25,43 @@
     "description": {
       "type": "richtext"
     },
-    "logo": {
+    "mainImage": {
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
-    "featuredImage": {
+    "secondaryImage1": {
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "secondaryImage2": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     },
     "websiteUrl": {
       "type": "string"
+    },
+    "content1": {
+      "type": "richtext"
+    },
+    "content2": {
+      "type": "blocks"
+    },
+    "content3": {
+      "type": "blocks"
     },
     "sortOrder": {
       "type": "integer",

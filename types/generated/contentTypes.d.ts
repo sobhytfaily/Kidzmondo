@@ -568,6 +568,36 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiBrandKidzMondoBrandKidzMondo
+  extends Struct.SingleTypeSchema {
+  collectionName: 'brand_kidz_mondos';
+  info: {
+    displayName: 'brand-kidzMondo';
+    pluralName: 'brand-kidz-mondos';
+    singularName: 'brand-kidz-mondo';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::brand-kidz-mondo.brand-kidz-mondo'
+    > &
+      Schema.Attribute.Private;
+    miniSections: Schema.Attribute.Component<'homepage.feature-item', true>;
+    publishedAt: Schema.Attribute.DateTime;
+    topImage: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiBrandBrand extends Struct.CollectionTypeSchema {
   collectionName: 'brands';
   info: {
@@ -580,17 +610,23 @@ export interface ApiBrandBrand extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    content1: Schema.Attribute.RichText;
+    content2: Schema.Attribute.Blocks;
+    content3: Schema.Attribute.Blocks;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.RichText;
-    featuredImage: Schema.Attribute.Media<'images'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::brand.brand'> &
       Schema.Attribute.Private;
-    logo: Schema.Attribute.Media<'images'>;
+    mainImage: Schema.Attribute.Media<'images'>;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
+    secondaryImage1: Schema.Attribute.Media<'images'>;
+    secondaryImage2: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
     slug: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
@@ -1288,6 +1324,7 @@ declare module '@strapi/strapi' {
       'api::blog-page.blog-page': ApiBlogPageBlogPage;
       'api::blog-post.blog-post': ApiBlogPostBlogPost;
       'api::blog.blog': ApiBlogBlog;
+      'api::brand-kidz-mondo.brand-kidz-mondo': ApiBrandKidzMondoBrandKidzMondo;
       'api::brand.brand': ApiBrandBrand;
       'api::category.category': ApiCategoryCategory;
       'api::franchise-page.franchise-page': ApiFranchisePageFranchisePage;

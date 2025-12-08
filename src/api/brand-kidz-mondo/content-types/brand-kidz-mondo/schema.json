@@ -1,0 +1,30 @@
+{
+  "kind": "singleType",
+  "collectionName": "brand_kidz_mondos",
+  "info": {
+    "singularName": "brand-kidz-mondo",
+    "pluralName": "brand-kidz-mondos",
+    "displayName": "brand-kidzMondo"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "topImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "miniSections": {
+      "type": "component",
+      "component": "homepage.feature-item",
+      "repeatable": true
+    }
+  }
+}
