@@ -1,0 +1,45 @@
+{
+  "collectionName": "components_homepage_sections",
+  "info": {
+    "displayName": "section",
+    "icon": "apps"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "miniTitle": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "img": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "featuredItems": {
+      "type": "component",
+      "component": "homepage.feature-item",
+      "repeatable": true
+    },
+    "Points": {
+      "type": "component",
+      "component": "homepage.list",
+      "repeatable": false
+    },
+    "ButtonLinks": {
+      "type": "component",
+      "component": "homepage.link",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

@@ -675,14 +675,16 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    img: Schema.Attribute.Media<'files', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::homepage.homepage'
     > &
       Schema.Attribute.Private;
-    pdf: Schema.Attribute.Media<'files'>;
+    miniTitle: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    section: Schema.Attribute.Component<'homepage.section', true>;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

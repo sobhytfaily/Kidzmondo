@@ -14,9 +14,12 @@
     "title": {
       "type": "string"
     },
-    "pdf": {
+    "miniTitle": {
+      "type": "string"
+    },
+    "img": {
       "type": "media",
-      "multiple": false,
+      "multiple": true,
       "allowedTypes": [
         "files"
       ]
@@ -25,6 +28,11 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::blog.blog"
+    },
+    "section": {
+      "type": "component",
+      "component": "homepage.section",
+      "repeatable": true
     }
   }
 }
