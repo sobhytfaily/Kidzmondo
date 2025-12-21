@@ -29,9 +29,14 @@
       "relation": "oneToMany",
       "target": "api::blog.blog"
     },
+    "Hero": {
+      "type": "component",
+      "component": "general.hero",
+      "repeatable": true
+    },
     "section": {
       "type": "component",
-      "component": "homepage.section",
+      "component": "general.section",
       "repeatable": true
     }
   }

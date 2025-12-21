@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "franchise_and_relationships",
+  "info": {
+    "singularName": "franchise-and-relationship",
+    "pluralName": "franchise-and-relationships",
+    "displayName": "Franchise & Relationship"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Hero": {
+      "type": "component",
+      "component": "general.hero",
+      "repeatable": false
+    },
+    "section": {
+      "type": "component",
+      "component": "general.section",
+      "repeatable": true
+    }
+  }
+}

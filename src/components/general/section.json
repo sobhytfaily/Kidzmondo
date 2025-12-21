@@ -17,6 +17,16 @@
     },
     "img": {
       "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "imageScroll": {
+      "type": "media",
       "multiple": true,
       "allowedTypes": [
         "images",
@@ -27,17 +37,17 @@
     },
     "featuredItems": {
       "type": "component",
-      "component": "homepage.feature-item",
+      "component": "general.feature-item",
       "repeatable": true
     },
     "list": {
       "type": "component",
-      "component": "homepage.list",
+      "component": "general.list",
       "repeatable": true
     },
     "ButtonLinks": {
       "type": "component",
-      "component": "homepage.link",
+      "component": "general.link",
       "repeatable": true
     }
   },

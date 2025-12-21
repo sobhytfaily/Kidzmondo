@@ -568,36 +568,6 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiBrandKidzMondoBrandKidzMondo
-  extends Struct.SingleTypeSchema {
-  collectionName: 'brand_kidz_mondos';
-  info: {
-    displayName: 'brand-kidzMondo';
-    pluralName: 'brand-kidz-mondos';
-    singularName: 'brand-kidz-mondo';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::brand-kidz-mondo.brand-kidz-mondo'
-    > &
-      Schema.Attribute.Private;
-    miniSections: Schema.Attribute.Component<'homepage.feature-item', true>;
-    publishedAt: Schema.Attribute.DateTime;
-    topImage: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiBrandBrand extends Struct.CollectionTypeSchema {
   collectionName: 'brands';
   info: {
@@ -616,16 +586,19 @@ export interface ApiBrandBrand extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Hero: Schema.Attribute.Component<'general.hero', false>;
+    imageScroll: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::brand.brand'> &
       Schema.Attribute.Private;
     mainImage: Schema.Attribute.Media<'images'>;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    secondaryImage1: Schema.Attribute.Media<'images'>;
-    secondaryImage2: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    >;
+    secondaryImage: Schema.Attribute.Media<'images'>;
+    section: Schema.Attribute.Component<'general.section', true>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -662,12 +635,13 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiFranchisePageFranchisePage extends Struct.SingleTypeSchema {
-  collectionName: 'franchise_pages';
+export interface ApiFranchiseAndRelationshipFranchiseAndRelationship
+  extends Struct.SingleTypeSchema {
+  collectionName: 'franchise_and_relationships';
   info: {
-    displayName: 'franchise page';
-    pluralName: 'franchise-pages';
-    singularName: 'franchise-page';
+    displayName: 'Franchise & Relationship';
+    pluralName: 'franchise-and-relationships';
+    singularName: 'franchise-and-relationship';
   };
   options: {
     draftAndPublish: true;
@@ -676,14 +650,15 @@ export interface ApiFranchisePageFranchisePage extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Hero: Schema.Attribute.Component<'general.hero', false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::franchise-page.franchise-page'
+      'api::franchise-and-relationship.franchise-and-relationship'
     > &
       Schema.Attribute.Private;
-    pdf: Schema.Attribute.Media<'files'>;
     publishedAt: Schema.Attribute.DateTime;
+    section: Schema.Attribute.Component<'general.section', true>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -705,6 +680,7 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Hero: Schema.Attribute.Component<'general.hero', true>;
     img: Schema.Attribute.Media<'files', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -714,7 +690,7 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
       Schema.Attribute.Private;
     miniTitle: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    section: Schema.Attribute.Component<'homepage.section', true>;
+    section: Schema.Attribute.Component<'general.section', true>;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1318,10 +1294,9 @@ declare module '@strapi/strapi' {
       'api::blog-page.blog-page': ApiBlogPageBlogPage;
       'api::blog-post.blog-post': ApiBlogPostBlogPost;
       'api::blog.blog': ApiBlogBlog;
-      'api::brand-kidz-mondo.brand-kidz-mondo': ApiBrandKidzMondoBrandKidzMondo;
       'api::brand.brand': ApiBrandBrand;
       'api::category.category': ApiCategoryCategory;
-      'api::franchise-page.franchise-page': ApiFranchisePageFranchisePage;
+      'api::franchise-and-relationship.franchise-and-relationship': ApiFranchiseAndRelationshipFranchiseAndRelationship;
       'api::homepage.homepage': ApiHomepageHomepage;
       'api::investor-relation.investor-relation': ApiInvestorRelationInvestorRelation;
       'api::logo.logo': ApiLogoLogo;

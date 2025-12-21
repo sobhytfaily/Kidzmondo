@@ -17,6 +17,11 @@
       "required": true,
       "unique": false
     },
+    "Hero": {
+      "type": "component",
+      "component": "general.hero",
+      "repeatable": false
+    },
     "mainImage": {
       "type": "media",
       "multiple": false,
@@ -25,7 +30,7 @@
         "images"
       ]
     },
-    "secondaryImage1": {
+    "secondaryImage": {
       "type": "media",
       "multiple": false,
       "required": false,
@@ -33,9 +38,9 @@
         "images"
       ]
     },
-    "secondaryImage2": {
+    "imageScroll": {
       "type": "media",
-      "multiple": false,
+      "multiple": true,
       "allowedTypes": [
         "images",
         "files",
@@ -51,6 +56,11 @@
     },
     "content3": {
       "type": "blocks"
+    },
+    "section": {
+      "type": "component",
+      "component": "general.section",
+      "repeatable": true
     }
   }
 }

@@ -10,7 +10,7 @@ export interface CategoryTextBlock extends Struct.ComponentSchema {
   };
 }
 
-export interface HomepageFeatureItem extends Struct.ComponentSchema {
+export interface GeneralFeatureItem extends Struct.ComponentSchema {
   collectionName: 'components_homepage_feature_items';
   info: {
     displayName: 'featureItem';
@@ -23,7 +23,21 @@ export interface HomepageFeatureItem extends Struct.ComponentSchema {
   };
 }
 
-export interface HomepageLink extends Struct.ComponentSchema {
+export interface GeneralHero extends Struct.ComponentSchema {
+  collectionName: 'components_general_heroes';
+  info: {
+    displayName: 'Hero';
+  };
+  attributes: {
+    buttonLink: Schema.Attribute.String;
+    buttonText: Schema.Attribute.String;
+    description: Schema.Attribute.Text;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface GeneralLink extends Struct.ComponentSchema {
   collectionName: 'components_homepage_links';
   info: {
     displayName: 'link';
@@ -35,7 +49,7 @@ export interface HomepageLink extends Struct.ComponentSchema {
   };
 }
 
-export interface HomepageList extends Struct.ComponentSchema {
+export interface GeneralList extends Struct.ComponentSchema {
   collectionName: 'components_homepage_lists';
   info: {
     displayName: 'list';
@@ -46,18 +60,22 @@ export interface HomepageList extends Struct.ComponentSchema {
   };
 }
 
-export interface HomepageSection extends Struct.ComponentSchema {
+export interface GeneralSection extends Struct.ComponentSchema {
   collectionName: 'components_homepage_sections';
   info: {
     displayName: 'section';
     icon: 'apps';
   };
   attributes: {
-    ButtonLinks: Schema.Attribute.Component<'homepage.link', true>;
+    ButtonLinks: Schema.Attribute.Component<'general.link', true>;
     description: Schema.Attribute.Text;
-    featuredItems: Schema.Attribute.Component<'homepage.feature-item', true>;
-    img: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
-    list: Schema.Attribute.Component<'homepage.list', true>;
+    featuredItems: Schema.Attribute.Component<'general.feature-item', true>;
+    imageScroll: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    img: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    list: Schema.Attribute.Component<'general.list', true>;
     miniTitle: Schema.Attribute.String;
     title: Schema.Attribute.String;
   };
@@ -67,10 +85,11 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'category.text-block': CategoryTextBlock;
-      'homepage.feature-item': HomepageFeatureItem;
-      'homepage.link': HomepageLink;
-      'homepage.list': HomepageList;
-      'homepage.section': HomepageSection;
+      'general.feature-item': GeneralFeatureItem;
+      'general.hero': GeneralHero;
+      'general.link': GeneralLink;
+      'general.list': GeneralList;
+      'general.section': GeneralSection;
     }
   }
 }
