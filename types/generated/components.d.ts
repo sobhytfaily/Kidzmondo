@@ -42,9 +42,7 @@ export interface HomepageList extends Struct.ComponentSchema {
     icon: 'apps';
   };
   attributes: {
-    pointOne: Schema.Attribute.String;
-    pointThree: Schema.Attribute.String;
-    pointTwo: Schema.Attribute.String;
+    point: Schema.Attribute.String;
   };
 }
 
@@ -59,8 +57,8 @@ export interface HomepageSection extends Struct.ComponentSchema {
     description: Schema.Attribute.Text;
     featuredItems: Schema.Attribute.Component<'homepage.feature-item', true>;
     img: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    list: Schema.Attribute.Component<'homepage.list', true>;
     miniTitle: Schema.Attribute.String;
-    Points: Schema.Attribute.Component<'homepage.list', false>;
     title: Schema.Attribute.String;
   };
 }

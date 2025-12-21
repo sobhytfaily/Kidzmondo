@@ -6,13 +6,7 @@
   },
   "options": {},
   "attributes": {
-    "pointOne": {
-      "type": "string"
-    },
-    "pointTwo": {
-      "type": "string"
-    },
-    "pointThree": {
+    "point": {
       "type": "string"
     }
   },

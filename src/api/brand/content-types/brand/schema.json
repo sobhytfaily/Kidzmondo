@@ -17,14 +17,6 @@
       "required": true,
       "unique": false
     },
-    "slug": {
-      "type": "string",
-      "required": true,
-      "unique": true
-    },
-    "description": {
-      "type": "richtext"
-    },
     "mainImage": {
       "type": "media",
       "multiple": false,
@@ -51,9 +43,6 @@
         "audios"
       ]
     },
-    "websiteUrl": {
-      "type": "string"
-    },
     "content1": {
       "type": "richtext"
     },
@@ -62,10 +51,6 @@
     },
     "content3": {
       "type": "blocks"
-    },
-    "sortOrder": {
-      "type": "integer",
-      "default": 0
     }
   }
 }
