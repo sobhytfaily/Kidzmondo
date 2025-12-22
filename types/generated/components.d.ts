@@ -16,9 +16,10 @@ export interface GeneralFeatureItem extends Struct.ComponentSchema {
     displayName: 'featureItem';
   };
   attributes: {
-    body: Schema.Attribute.Text;
+    Body: Schema.Attribute.RichText;
     img: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
     link: Schema.Attribute.String;
+    list: Schema.Attribute.Component<'general.list', true>;
     title: Schema.Attribute.String;
   };
 }

@@ -580,9 +580,9 @@ export interface ApiBrandBrand extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    content_2: Schema.Attribute.RichText;
+    content_3: Schema.Attribute.RichText;
     content1: Schema.Attribute.RichText;
-    content2: Schema.Attribute.Blocks;
-    content3: Schema.Attribute.Blocks;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

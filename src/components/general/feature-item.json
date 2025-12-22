@@ -8,9 +8,6 @@
     "title": {
       "type": "string"
     },
-    "body": {
-      "type": "text"
-    },
     "link": {
       "type": "string"
     },
@@ -23,6 +20,14 @@
         "videos",
         "audios"
       ]
+    },
+    "Body": {
+      "type": "richtext"
+    },
+    "list": {
+      "type": "component",
+      "component": "general.list",
+      "repeatable": true
     }
   },
   "config": {}
