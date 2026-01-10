@@ -17,6 +17,7 @@ export interface GeneralFeatureItem extends Struct.ComponentSchema {
   };
   attributes: {
     Body: Schema.Attribute.RichText;
+    ButtonLink: Schema.Attribute.Component<'general.link', true>;
     img: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
     link: Schema.Attribute.String;
     list: Schema.Attribute.Component<'general.list', true>;

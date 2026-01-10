@@ -28,6 +28,11 @@
       "type": "component",
       "component": "general.list",
       "repeatable": true
+    },
+    "ButtonLink": {
+      "type": "component",
+      "component": "general.link",
+      "repeatable": true
     }
   },
   "config": {}

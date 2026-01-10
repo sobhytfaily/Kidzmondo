@@ -45,6 +45,9 @@
     },
     "authorName": {
       "type": "string"
+    },
+    "description": {
+      "type": "text"
     }
   }
 }
