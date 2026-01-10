@@ -4,7 +4,7 @@
   "info": {
     "singularName": "brand",
     "pluralName": "brands",
-    "displayName": "Brand",
+    "displayName": "Pages",
     "description": "Kidz Holding brands and ventures (KidzMondo, Karnavali, etc.)"
   },
   "options": {
@@ -21,41 +21,6 @@
       "type": "component",
       "component": "general.hero",
       "repeatable": false
-    },
-    "mainImage": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ]
-    },
-    "secondaryImage": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ]
-    },
-    "imageScroll": {
-      "type": "media",
-      "multiple": true,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
-    "content1": {
-      "type": "richtext"
-    },
-    "content_2": {
-      "type": "richtext"
-    },
-    "content_3": {
-      "type": "richtext"
     },
     "section": {
       "type": "component",

@@ -496,44 +496,6 @@ export interface ApiBlogPageBlogPage extends Struct.SingleTypeSchema {
   };
 }
 
-export interface ApiBlogPostBlogPost extends Struct.CollectionTypeSchema {
-  collectionName: 'blog_posts';
-  info: {
-    displayName: 'Blog-Post';
-    pluralName: 'blog-posts';
-    singularName: 'blog-post';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    category: Schema.Attribute.String;
-    content: Schema.Attribute.Blocks & Schema.Attribute.Required;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    excerpt: Schema.Attribute.Text;
-    featuredImage: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    >;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::blog-post.blog-post'
-    > &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    publishedDate: Schema.Attribute.Date;
-    slug: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique;
-    title: Schema.Attribute.String & Schema.Attribute.Required;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
   collectionName: 'blogs';
   info: {
@@ -572,7 +534,7 @@ export interface ApiBrandBrand extends Struct.CollectionTypeSchema {
   collectionName: 'brands';
   info: {
     description: 'Kidz Holding brands and ventures (KidzMondo, Karnavali, etc.)';
-    displayName: 'Brand';
+    displayName: 'Pages';
     pluralName: 'brands';
     singularName: 'brand';
   };
@@ -580,24 +542,15 @@ export interface ApiBrandBrand extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    content_2: Schema.Attribute.RichText;
-    content_3: Schema.Attribute.RichText;
-    content1: Schema.Attribute.RichText;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     Hero: Schema.Attribute.Component<'general.hero', false>;
-    imageScroll: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::brand.brand'> &
       Schema.Attribute.Private;
-    mainImage: Schema.Attribute.Media<'images'>;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    secondaryImage: Schema.Attribute.Media<'images'>;
     section: Schema.Attribute.Component<'general.section', true>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -635,36 +588,6 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiFranchiseAndRelationshipFranchiseAndRelationship
-  extends Struct.SingleTypeSchema {
-  collectionName: 'franchise_and_relationships';
-  info: {
-    displayName: 'Franchise & Relationship';
-    pluralName: 'franchise-and-relationships';
-    singularName: 'franchise-and-relationship';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    Hero: Schema.Attribute.Component<'general.hero', false>;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::franchise-and-relationship.franchise-and-relationship'
-    > &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    section: Schema.Attribute.Component<'general.section', true>;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
   collectionName: 'homepages';
   info: {
@@ -692,35 +615,6 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     section: Schema.Attribute.Component<'general.section', true>;
     title: Schema.Attribute.String;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiInvestorRelationInvestorRelation
-  extends Struct.SingleTypeSchema {
-  collectionName: 'investor_relations';
-  info: {
-    displayName: 'investor-relation';
-    pluralName: 'investor-relations';
-    singularName: 'investor-relation';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::investor-relation.investor-relation'
-    > &
-      Schema.Attribute.Private;
-    pdfs: Schema.Attribute.Media<'files', true>;
-    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1292,13 +1186,10 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::blog-page.blog-page': ApiBlogPageBlogPage;
-      'api::blog-post.blog-post': ApiBlogPostBlogPost;
       'api::blog.blog': ApiBlogBlog;
       'api::brand.brand': ApiBrandBrand;
       'api::category.category': ApiCategoryCategory;
-      'api::franchise-and-relationship.franchise-and-relationship': ApiFranchiseAndRelationshipFranchiseAndRelationship;
       'api::homepage.homepage': ApiHomepageHomepage;
-      'api::investor-relation.investor-relation': ApiInvestorRelationInvestorRelation;
       'api::logo.logo': ApiLogoLogo;
       'api::website-name.website-name': ApiWebsiteNameWebsiteName;
       'plugin::content-releases.release': PluginContentReleasesRelease;
