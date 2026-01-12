@@ -17,6 +17,16 @@
       "required": true,
       "unique": false
     },
+    "logo": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
     "Hero": {
       "type": "component",
       "component": "general.hero",
