@@ -107,43 +107,6 @@ export interface AdminApiTokenPermission extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface AdminAuditLog extends Struct.CollectionTypeSchema {
-  collectionName: 'strapi_audit_logs';
-  info: {
-    displayName: 'Audit Log';
-    pluralName: 'audit-logs';
-    singularName: 'audit-log';
-  };
-  options: {
-    draftAndPublish: false;
-    timestamps: false;
-  };
-  pluginOptions: {
-    'content-manager': {
-      visible: false;
-    };
-    'content-type-builder': {
-      visible: false;
-    };
-  };
-  attributes: {
-    action: Schema.Attribute.String & Schema.Attribute.Required;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    date: Schema.Attribute.DateTime & Schema.Attribute.Required;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'admin::audit-log'> &
-      Schema.Attribute.Private;
-    payload: Schema.Attribute.JSON;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    user: Schema.Attribute.Relation<'oneToOne', 'admin::user'>;
-  };
-}
-
 export interface AdminPermission extends Struct.CollectionTypeSchema {
   collectionName: 'admin_permissions';
   info: {
@@ -587,6 +550,94 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
     name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'name'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiFranchiseInquiryFranchiseInquiry
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'franchise_inquiries';
+  info: {
+    displayName: 'Franchise Inquiry';
+    pluralName: 'franchise-inquiries';
+    singularName: 'franchise-inquiry';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    address: Schema.Attribute.Text & Schema.Attribute.Required;
+    companyName: Schema.Attribute.Text & Schema.Attribute.Required;
+    country: Schema.Attribute.Enumeration<
+      [
+        'Saudi Arabia',
+        'UAE',
+        'Qatar',
+        'Kuwait',
+        'Bahrain',
+        'Oman',
+        'Lebanon',
+        'Jordan',
+        'Egypt',
+        'Turkey',
+      ]
+    > &
+      Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    discoverSource: Schema.Attribute.Enumeration<
+      ['Email or Direct Marketing', 'Advertisement', 'Website', 'Others']
+    > &
+      Schema.Attribute.DefaultTo<'Email or Direct Marketing'>;
+    email: Schema.Attribute.Email & Schema.Attribute.Required;
+    fax: Schema.Attribute.String;
+    franchiseTimeline: Schema.Attribute.Enumeration<
+      ['Within 3 Months', 'Within 6 Months', 'Within 12 Months']
+    > &
+      Schema.Attribute.DefaultTo<'Within 3 Months'>;
+    fullName: Schema.Attribute.String & Schema.Attribute.Required;
+    haveExperience: Schema.Attribute.Enumeration<['No', 'Yes']> &
+      Schema.Attribute.DefaultTo<'No'>;
+    havePremises: Schema.Attribute.Enumeration<['No', 'Yes']> &
+      Schema.Attribute.DefaultTo<'No'>;
+    industry: Schema.Attribute.Text & Schema.Attribute.Required;
+    interestCountry: Schema.Attribute.Enumeration<
+      [
+        'Saudi Arabia',
+        'UAE',
+        'Qatar',
+        'Kuwait',
+        'Bahrain',
+        'Oman',
+        'Lebanon',
+        'Jordan',
+        'Egypt',
+        'Turkey',
+      ]
+    > &
+      Schema.Attribute.Required;
+    interestState: Schema.Attribute.String & Schema.Attribute.Required;
+    investment: Schema.Attribute.Enumeration<
+      [
+        'US 5,000,001 - US 10,000,000',
+        'US 10,000,001 - US 20,000,000',
+        'Above US 20,000,000',
+      ]
+    > &
+      Schema.Attribute.DefaultTo<'US 5,000,001 - US 10,000,000'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::franchise-inquiry.franchise-inquiry'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    remarks: Schema.Attribute.Text & Schema.Attribute.Required;
+    telephone1: Schema.Attribute.String & Schema.Attribute.Required;
+    telephone2: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1214,7 +1265,6 @@ declare module '@strapi/strapi' {
     export interface ContentTypeSchemas {
       'admin::api-token': AdminApiToken;
       'admin::api-token-permission': AdminApiTokenPermission;
-      'admin::audit-log': AdminAuditLog;
       'admin::permission': AdminPermission;
       'admin::role': AdminRole;
       'admin::session': AdminSession;
@@ -1225,6 +1275,7 @@ declare module '@strapi/strapi' {
       'api::blog.blog': ApiBlogBlog;
       'api::brand.brand': ApiBrandBrand;
       'api::category.category': ApiCategoryCategory;
+      'api::franchise-inquiry.franchise-inquiry': ApiFranchiseInquiryFranchiseInquiry;
       'api::homepage.homepage': ApiHomepageHomepage;
       'api::lead.lead': ApiLeadLead;
       'api::logo.logo': ApiLogoLogo;

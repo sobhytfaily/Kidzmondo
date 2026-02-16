@@ -89,11 +89,11 @@
     "franchiseTimeline": {
       "type": "enumeration",
       "enum": [
-        "3 Months",
-        "6 Months",
-        "12 Months"
+        "Within 3 Months",
+        "Within 6 Months",
+        "Within 12 Months"
       ],
-      "default": "3 Months"
+      "default": "Within 3 Months"
     },
     "havePremises": {
       "type": "enumeration",
