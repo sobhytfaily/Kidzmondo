@@ -570,64 +570,21 @@ export interface ApiFranchiseInquiryFranchiseInquiry
   attributes: {
     address: Schema.Attribute.Text & Schema.Attribute.Required;
     companyName: Schema.Attribute.Text & Schema.Attribute.Required;
-    country: Schema.Attribute.Enumeration<
-      [
-        'Saudi Arabia',
-        'UAE',
-        'Qatar',
-        'Kuwait',
-        'Bahrain',
-        'Oman',
-        'Lebanon',
-        'Jordan',
-        'Egypt',
-        'Turkey',
-      ]
-    > &
-      Schema.Attribute.Required;
+    country: Schema.Attribute.String & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    discoverSource: Schema.Attribute.Enumeration<
-      ['Email or Direct Marketing', 'Advertisement', 'Website', 'Others']
-    > &
-      Schema.Attribute.DefaultTo<'Email or Direct Marketing'>;
+    discoverSource: Schema.Attribute.String;
     email: Schema.Attribute.Email & Schema.Attribute.Required;
     fax: Schema.Attribute.String;
-    franchiseTimeline: Schema.Attribute.Enumeration<
-      ['Within 3 Months', 'Within 6 Months', 'Within 12 Months']
-    > &
-      Schema.Attribute.DefaultTo<'Within 3 Months'>;
+    franchiseTimeline: Schema.Attribute.String;
     fullName: Schema.Attribute.String & Schema.Attribute.Required;
-    haveExperience: Schema.Attribute.Enumeration<['No', 'Yes']> &
-      Schema.Attribute.DefaultTo<'No'>;
-    havePremises: Schema.Attribute.Enumeration<['No', 'Yes']> &
-      Schema.Attribute.DefaultTo<'No'>;
+    haveExperience: Schema.Attribute.String;
+    havePremises: Schema.Attribute.String;
     industry: Schema.Attribute.Text & Schema.Attribute.Required;
-    interestCountry: Schema.Attribute.Enumeration<
-      [
-        'Saudi Arabia',
-        'UAE',
-        'Qatar',
-        'Kuwait',
-        'Bahrain',
-        'Oman',
-        'Lebanon',
-        'Jordan',
-        'Egypt',
-        'Turkey',
-      ]
-    > &
-      Schema.Attribute.Required;
+    interestCountry: Schema.Attribute.String & Schema.Attribute.Required;
     interestState: Schema.Attribute.String & Schema.Attribute.Required;
-    investment: Schema.Attribute.Enumeration<
-      [
-        'US 5,000,001 - US 10,000,000',
-        'US 10,000,001 - US 20,000,000',
-        'Above US 20,000,000',
-      ]
-    > &
-      Schema.Attribute.DefaultTo<'US 5,000,001 - US 10,000,000'>;
+    investment: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
